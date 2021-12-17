@@ -1,15 +1,13 @@
 import TextField from "../text-field";
 
 export default function NumberField({
-  value,
-  label,
   onChange = () => {},
   allowDecimals = false,
   maxLength = 128,
+  ...rest
 }) {
   return (
     <TextField
-      value={value}
       onChange={(val) =>
         onChange(
           val
@@ -17,7 +15,7 @@ export default function NumberField({
             .slice(0, maxLength)
         )
       }
-      label={label}
+      {...rest}
     />
   );
 }

@@ -1,6 +1,11 @@
 import NumberField from "../number-field";
 
-export default function PhoneField({ value, label, onChange = () => {} }) {
+export default function PhoneField({
+  value,
+  label,
+  onChange = () => {},
+  ...rest
+}) {
   function mask(val) {
     var reg = /^(\d{1,3})(?:\s*(\d{1,3})(?:\s*(\d{1,4})?)?)?$/;
 
@@ -20,6 +25,7 @@ export default function PhoneField({ value, label, onChange = () => {} }) {
       label={label || "Phone number"}
       maxLength={10}
       allowDecimals={false}
+      {...rest}
     />
   );
 }
