@@ -1,5 +1,4 @@
 import NumberField from "../number-field";
-import { PhoneIcon } from "@heroicons/react/solid";
 
 export default function PhoneField({ value, label, onChange = () => {} }) {
   function mask(val) {
@@ -17,10 +16,10 @@ export default function PhoneField({ value, label, onChange = () => {} }) {
   return (
     <NumberField
       value={mask(value)}
-      onChange={(val) => onChange(val.replace(/[^0-9]/g, "").slice(0, 10))}
-      label={label}
+      onChange={(val) => onChange(val)}
+      label={label || "Phone number"}
       maxLength={10}
-      renderLeftIcon={() => <PhoneIcon className="w-6 h-6" />}
+      allowDecimals={false}
     />
   );
 }

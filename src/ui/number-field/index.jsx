@@ -4,16 +4,20 @@ export default function NumberField({
   value,
   label,
   onChange = () => {},
-  renderLeftIcon = () => {},
-  renderRightIcon = () => {},
+  allowDecimals = false,
+  maxLength = 128,
 }) {
   return (
     <TextField
       value={value}
-      onChange={(val) => onChange(val.replace(/[^0-9.]/g, ""))}
+      onChange={(val) =>
+        onChange(
+          val
+            .replace(allowDecimals ? /[^0-9.]/g : /[^0-9]/g, "")
+            .slice(0, maxLength)
+        )
+      }
       label={label}
-      renderLeftIcon={renderLeftIcon}
-      renderRightIcon={renderRightIcon}
     />
   );
 }
